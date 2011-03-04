@@ -39,3 +39,6 @@ def random_32():
     '''生成32位16进制随机数'''
     import random
     print ''.join(map(lambda x:'%04x'%random.randint(0,65535),range(8)))
+    import os
+    from binascii import hexlify
+    print hexlify(os.urandom(16))
