@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #coding:utf8
 
+
 def code_lines():
     '''统计各种语言的代码行数'''
     import os
@@ -42,3 +43,15 @@ def random_32():
     import os
     from binascii import hexlify
     print hexlify(os.urandom(16))
+
+
+def sort_dict_by_val(d, reverse=False):
+    '''字典排序--根据value'''
+    from operator import itemgetter
+    return sorted(d.iteritems(), key=itemgetter(1), reverse=reverse)
+
+
+def sort_dict_by_key(d, reverse=False):
+    '''字典排序--根据value'''
+    from operator import itemgetter
+    return sorted(d.iteritems(), key=itemgetter(0), reverse=reverse)
