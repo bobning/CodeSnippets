@@ -34,6 +34,22 @@ def time_convert():
     print int(time.mktime(time.strptime('2010-07-30 02:10:11', '%Y-%m-%d %H:%M:%S')))
     #int->str
     print time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    
+
+def is_same_week(t):
+    '''
+    是否在同周
+    '''
+    tm = time.strptime(t, '%Y-%m-%d')
+    dt = datetime.datetime(tm.tm_year, tm.tm_mon, tm.tm_mday)
+    tm = time.localtime()
+    dt_now = datetime.datetime(tm.tm_year, tm.tm_mon, tm.tm_mday)
+    start_t = dt_now - datetime.timedelta(dt_now.isoweekday() - 1)
+    step = 7 - dt_now.isoweekday() + 1
+    end_t = dt_now + datetime.timedelta(step)
+    if start_t <= dt < end_t:
+        return True
+    return False
 
 
 def random_32():
